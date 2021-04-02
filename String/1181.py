@@ -1,4 +1,3 @@
-
 loop = int(input())
 string_list = []
 while loop > 0:

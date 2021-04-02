@@ -1,4 +1,3 @@
-
 loop = int(input())
 
 while loop > 0:
@@ -7,4 +6,3 @@ while loop > 0:
     answer = int(string_list[0]) + int(string_list[1])
     print(answer)
     loop -= 1
-
