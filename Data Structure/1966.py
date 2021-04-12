@@ -39,30 +39,32 @@ A (1) -> A 출력
 '''
 import sys
 from collections import deque
+
 TC = int(sys.stdin.readline())
-#dic = collections.defaultDict(int)
 for _ in range(TC):
+    #input
     answer = []
     N, M = map(int, sys.stdin.readline().split())
     pr = deque(list(map(int, sys.stdin.readline().split())))
     target_idx = M
+    
     if N == 1:
         print(1)
     else:
-        #for i in range(len(pr)):
         while pr:
-            if target_idx < 0:
-                target_idx = len(pr) - 1
             max_pr_idx = pr.index(max(pr))
+
+            if target_idx < 0:
+                target_idx = len(pr) - 1  
+            
             if pr[max_pr_idx] == pr[target_idx] and target_idx == 0:
                 break
+            
             if pr[0] < pr[max_pr_idx]:
                 pr.append(pr.popleft())
                 target_idx -= 1
-                #print(pr, answer, target_idx)
             else:
                 answer.append(pr.popleft())
                 target_idx -= 1
-                #print(pr, answer, target_idx)
-
+                
         print(len(answer) + 1)
