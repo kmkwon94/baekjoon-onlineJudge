@@ -2,7 +2,7 @@
 #미로찾기 - bfs
 
 시작위치 1,1 에서 N,M 까지의 움직여야하는 최소 칸을 구해라.
-'''
+
 
 import sys
 from collections import deque
@@ -43,3 +43,41 @@ def bfs(x, y):
 
 
 print(bfs(0, 0))
+'''
+import sys
+from collections import deque
+
+def bfs(x,y):
+  #상하좌우
+  dq.append((x,y))
+  dx = [-1, 1, 0, 0]
+  dy = [0, 0, -1, 1]
+
+  #큐가 빌때까지
+  while dq:
+    x, y = dq.popleft()
+    #상하좌우 좌표 얻기
+    for i in range(4):
+      nx = x + dx[i]
+      ny = y + dy[i]
+      
+      if nx < 0 or nx >= n or ny < 0 or ny >= m:
+        continue
+
+      if matrix[nx][ny] == 0:
+        continue
+      #상하좌우가 1이라면
+      if matrix[nx][ny] == 1:
+        matrix[nx][ny] = matrix[x][y] + 1
+        dq.append((nx,ny))
+
+
+
+n,m = map(int, sys.stdin.readline().split())
+matrix , dq= [], deque()
+for _ in range(n):
+  matrix.append(list(map(int, sys.stdin.readline().strip())))
+
+bfs(0,0)
+print(matrix[n-1][m-1])
+
