@@ -96,17 +96,18 @@ for i in range(n):
             dq.append((i, j))
 
 bfs()
-max_num = 0
-is_answer = False
+result = -999
+is_tot = False
 
 for i in farm:
-    if 0 in i:
-        print(-1)
-        is_answer = False
-        break
-    else:
-        max_num = max(max_num, max(i))
-        is_answer = True
+    for j in i:
+      if (j == 0):
+        is_tot = True
+      result = max(result, j)
 
-if is_answer:
-    print(max_num - 1)
+if is_tot:
+  print(-1)
+elif result == -1:
+  print(0)
+else:
+  print(result - 1)
