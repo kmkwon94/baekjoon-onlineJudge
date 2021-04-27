@@ -34,7 +34,7 @@ DFS라고 생각한 이유는 상하좌우 돌아다니면서 연결되지 않�
 import sys
 
 TC = int(input())
-
+sys.setrecursionlimit(10**7) 
 
 def dfs(x, y):
     if x < 0 or x >= m or y < 0 or y >= n:
@@ -44,11 +44,11 @@ def dfs(x, y):
         return False
 
     if visited[x][y] == 0:
+        visited[x][y] = 1
         dfs(x + 1, y)
         dfs(x - 1, y)
         dfs(x, y + 1)
         dfs(x, y - 1)
-        visited[x][y] = 1
         return True
     return False
     
