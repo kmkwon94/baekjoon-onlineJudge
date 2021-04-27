@@ -37,19 +37,21 @@ TC = int(input())
 sys.setrecursionlimit(10**7) 
 
 def dfs(x, y):
+    #범위를 벗어날 경우 return False
     if x < 0 or x >= m or y < 0 or y >= n:
         return False
     
+    # 배추가 없다면 return False
     if matrix[x][y] == 0:
         return False
-
+    #배추가 있고, 방문 하지 않았다면 
     if visited[x][y] == 0:
-        visited[x][y] = 1
+        visited[x][y] = 1 #해당 위치 방문처리 한 후 재귀
         dfs(x + 1, y)
         dfs(x - 1, y)
         dfs(x, y + 1)
         dfs(x, y - 1)
-        return True
+        return True #모든 재귀가 끝나면 return True
     return False
     
 for _ in range(TC):
